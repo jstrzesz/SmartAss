@@ -33,6 +33,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.18.3",
     "create-react-class": "^15.6.3",
+    "dotenv": "^6.1.0",
     "file-loader": "^2.0.0",
     "json-parse-better-errors": "^1.0.2",
     "morgan": "^1.9.1",

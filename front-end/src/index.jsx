@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Home from './components/home.jsx';
 import SignUp from './components/sign_up.jsx';
 import GameOver from './components/gameOver.jsx';
@@ -8,6 +8,7 @@ import GamePage from './components/gamePage.jsx';
 import GameCreation from './components/gameCreation.jsx';
 import Navigation from './components/navigation.jsx';
 import triviaHelpers from '../../server/trivia_api_helpers.js'
+import Error from './components/error.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -28,9 +29,10 @@ class App extends Component {
             <Route path="/gameCreation" render={props => <GameCreation {...props} />}/>
             <Route path="/gamePage" render={props => <GamePage {...props} />}/>
             <Route path="/gameOver" render={props => <GameOver {...props} />} />
+            <Route component={ Error } />
           </Switch>
         </div>
-      </BrowserRouter>
+       </BrowserRouter>
     )
   }
 }

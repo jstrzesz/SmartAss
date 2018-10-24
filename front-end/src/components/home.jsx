@@ -74,7 +74,7 @@ export default class Home extends Component {
                     <Link to="/gameCreation">
                       <button type="submit" 
                               className="btn btn-primary" 
-                              onClick={this.redirectToGameCreation}>Create Game</button>
+                              onClick={this.redirectToGameCeation}>Create Game</button>
                     </Link>
                   </BrowserRouter>
                 </div>

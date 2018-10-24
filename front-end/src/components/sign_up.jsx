@@ -104,9 +104,9 @@ export default class SignUp extends React.Component {
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            <button type="submit" 
-                    className="btn btn-primary" 
-                    onClick={this.redirectToGameCreation}>Join a Game</button>
+            <button type="submit"
+              className="btn btn-primary"
+              onClick={this.redirectToGameCreation}>Join a Game</button>
           </div>
         </div>
       </div>
