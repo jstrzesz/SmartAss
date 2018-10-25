@@ -82,7 +82,7 @@ export default class Home extends Component {
               </div>
 
               <div className="col-md-4">
-                <h3>Log In</h3>
+                <h3 style={{ color: 'white' }}>Log In</h3>
                 <form role="form">
                   <div className="form-group">
                     <label style={{ color: 'white' }}>Username</label>
