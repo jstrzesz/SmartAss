@@ -29,6 +29,7 @@ export default class GameCreation extends Component {
     this.playersDropdownClick = this.playersDropdownClick.bind(this);
     this.redirectToGamePage = this.redirectToGamePage.bind(this);
     this.handleSubmitGameParams = this.handleSubmitGameParams.bind(this);
+    this.redirectToLogin = this.redirectToLogin.bind(this);
   }
 
   toggleOpenCategory () {
@@ -41,6 +42,12 @@ export default class GameCreation extends Component {
 
   toggleOpenPlayers() {
     this.setState({ playersIsOpen: !this.state.playersIsOpen })
+  }
+
+  redirectToLogin() {
+    if (this.state.username === '') {
+      this.props.history.push('/login');
+    }
   }
 
   categoryDropdownClick (e) {
@@ -71,6 +78,7 @@ export default class GameCreation extends Component {
   }
 
   componentDidMount() {
+    this.redirectToLogin();
     axios.get('/gameCreation')
       .then(res => {
         this.setState({questions: res.data})

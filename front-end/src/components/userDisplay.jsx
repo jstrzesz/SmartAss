@@ -7,7 +7,7 @@ export default class Users extends Component {
 
   render () {
     return (
-      <tr>
+      <tr style={{ color: 'white' }}>
         <td>{this.props.user.username}</td>
         <td>{this.props.user.averageWinRate}</td>
         <td>{this.props.user.wins}</td>

@@ -65,7 +65,7 @@ export default class GamePage extends Component {
 
   render () {
     return (
-      <div className="container-fluid">
+      <div className="container">
         {this.state.questionsToDisplay.map((question, index) => {
           return (<Choices key={index} question={question} />)
         })}

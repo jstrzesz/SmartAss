@@ -4,6 +4,7 @@ import axios from 'axios';
 import SignUp from './sign_up.jsx';
 import GameCreation from './gameCreation.jsx';
 import Users from './userDisplay.jsx';
+// import '../css/home.css';
 
 export default class Home extends Component {
   constructor(props) {
@@ -45,22 +46,22 @@ export default class Home extends Component {
 
   render () {
     return (
-      <div className="container-fluid">
-        <h1>Smart-Ass™</h1>
-        <h2>A Trivia Game</h2>
-        <h3>© 2018</h3>
+      <div className="container" style={{backgroundColor: 'black'}}>
+        <h1 style={{ color: 'white' }}>Smart-Ass™</h1>
+        <h2 style={{ color: 'white' }}>A Trivia Game</h2>
+        <h3 style={{ color: 'white' }}>© 2018</h3>
         <div className="row">
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-8">
-                <h3>Leader Board</h3>
+                <h3 style={{ color: 'white' }}>Leader Board</h3>
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>Username</th>
-                      <th>Rank</th>
-                      <th>Wins</th>
-                      <th>Losses</th>
+                      <th style={{color: 'white'}}>Username</th>
+                      <th style={{ color: 'white' }}>Rank</th>
+                      <th style={{ color: 'white' }}>Wins</th>
+                      <th style={{ color: 'white' }}>Losses</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -74,7 +75,7 @@ export default class Home extends Component {
                     <Link to="/gameCreation">
                       <button type="submit" 
                               className="btn btn-primary" 
-                              onClick={this.redirectToGameCeation}>Create Game</button>
+                              onClick={this.redirectToGameCreation}>Create Game</button>
                     </Link>
                   </BrowserRouter>
                 </div>
@@ -84,23 +85,23 @@ export default class Home extends Component {
                 <h3>Log In</h3>
                 <form role="form">
                   <div className="form-group">
-                    <label>Username</label>
+                    <label style={{ color: 'white' }}>Username</label>
                     <input type="email" className="form-control" id="UsernameInput" onChange={this.handleChange}/>
                   </div>
                   <div className="form-group">
-                    <label>Email address</label>
+                    <label style={{ color: 'white' }}>Email address</label>
                     <input type="email" className="form-control" id="EmailInput" />
                   </div>
                   <div className="form-group">
-                    <label>Password</label>
+                    <label style={{ color: 'white' }}>Password</label>
                     <input type="password" className="form-control" id="PasswordInput" />
                   </div>
                   <button type="submit" 
                           className="btn btn-primary"
                           onClick={this.redirectToGameCreation}>Log In</button>
                 </form>
-                <h4>New Players</h4>
-                <h5>Not a player? Sign Up Here </h5>
+                <h4 style={{ color: 'white' }}>New Players</h4>
+                <h5 style={{ color: 'white' }}>Not a player? Sign Up Here </h5>
                 <BrowserRouter>
                   <Link to="/sign_up">
                     <button type="submit" 

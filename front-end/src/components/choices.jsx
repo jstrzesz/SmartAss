@@ -46,7 +46,7 @@ export default class Choices extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
           <div className="col-md-12">
             <h2>Question</h2>
