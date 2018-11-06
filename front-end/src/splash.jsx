@@ -24,8 +24,8 @@ export default class Splash extends Component {
           <div className="col-md-2"></div>
             <div className="col-md-8">
               <div style={{color: 'white'}}>Splash page</div>
-             
-                <button style={{backgroundColor: 'white'}}onClick={this.redirectToSignUp}>Sign Up</button>
+                <button style={{ backgroundColor: 'white' }} onClick={this.redirectToSignUp}>Sign Up</button>
+                <button style={{backgroundColor: 'white'}} onClick={this.redirectToLogin}>Login</button>
               
             </div>
           <div className="col-md-2"></div>

@@ -10,6 +10,7 @@ import Navigation from './components/navigation.jsx';
 import triviaHelpers from '../../server/trivia_api_helpers.js'
 import Error from './components/error.jsx';
 import Splash from './splash.jsx';
+import Login from './components/login.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends Component {
             <Route exact={true} path="/" render={props => <Splash {...props} />}/>
             <Route path="/home" render={props => <Home {...props} />} />
             <Route path="/sign_up" render={props => <SignUp {...props} />}/>
+            <Route path="/login" render={props => <Login {...props} />} />
             <Route path="/gameCreation" render={props => <GameCreation {...props} />}/>
             <Route path="/gamePage" render={props => <GamePage {...props} />}/>
             <Route path="/gameOver" render={props => <GameOver {...props} />} />
