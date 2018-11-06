@@ -19,11 +19,32 @@ export default class Splash extends Component {
 
   render() {
     return (
-      <div>
-        <div>Splash page</div>
-        <div>
-          <button onClick={this.redirectToSignUp}>Sign Up</button>
+      <div className="container" style={{backgroundColor: 'black'}}>
+        <div className="row">
+          <div className="col-md-2"></div>
+            <div className="col-md-8">
+              <div style={{color: 'white'}}>Splash page</div>
+             
+                <button style={{backgroundColor: 'white'}}onClick={this.redirectToSignUp}>Sign Up</button>
+              
+            </div>
+          <div className="col-md-2"></div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     )
   }

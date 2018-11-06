@@ -80,7 +80,7 @@ export default class SignUp extends React.Component {
           <div className="col-md-12">
             <form role="form" onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label style={{color: 'white'}}>Create Username</label>
+                <label style={{color: 'white'}}>Username</label>
                 <input type="text" name="username" className="form-control" id="UsernameCreate" onChange={this.handleChange} />
               </div>
             <div className="form-group">
@@ -100,7 +100,7 @@ export default class SignUp extends React.Component {
                       onChange={this.handleChange} />
             </div>
             <div className="form-group">
-                <label id="passwordInput2" style={{ color: 'white' }}>Re-Enter Password to confirm</label>
+                <label id="passwordInput2" style={{ color: 'white' }}>Re-Enter Password</label>
               <input  type="password" 
                       name="passwordinput2" 
                       className="form-control" 
