@@ -28,7 +28,9 @@ export default class Home extends Component {
   }
 
   redirectToGameCreation() {
-    this.props.history.push('/gameCreation', {state: {users: this.state.users, username: this.state.username}})
+    this.props.history.push('/gameCreation', 
+    {state: {username: this.state.username}}
+    )
   }
 
   componentDidMount() {
