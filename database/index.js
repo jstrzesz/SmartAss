@@ -10,7 +10,8 @@ var db = mongoose.connection;
 
 
 //FIXME: remember to add a process.env here for mlabs deploy
-const mongoDB = `mongodb://user:tron22@ds153552.mlab.com:53552/smartass`;
+// const mongoDB = `mongodb://user:tron22@ds153552.mlab.com:53552/smartass`;
+const mongoDB = 'mongodb://dev_user:dev_user1@ds253713.mlab.com:53713/smartass_users'
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, {

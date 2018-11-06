@@ -54,6 +54,7 @@ app.use(function (req, res, next) {
 //handler for signing up
 app.post('/sign_up',
   (request, response) => {
+    console.log(request.body);
     //take the info from the fields
     const username = request.body.username;
     const userEmail = request.body.email;

@@ -22,6 +22,7 @@ export default class SignUp extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.redirectToGameCreation = this.redirectToGameCreation.bind(this);
+      this.redirectToHome = this.redirectToHome.bind(this);
   }
 
   handleChange(event) {
@@ -53,7 +54,7 @@ export default class SignUp extends React.Component {
         passwordinput2: this.state.passwordinput2
       }
 
-        //console.log(passwordinput, passwordinput2)
+        console.log(newUser)
 
     axios.post('/sign_up', newUser)
       .then((response) => {
@@ -67,19 +68,23 @@ export default class SignUp extends React.Component {
     this.props.history.push('/gameCreation', {state: this.state.username})
   }
 
+  redirectToHome() {
+    this.props.history.push('/', {state: this.state.username})
+  }
+
   render() {
     return (
-      <div className="container-fluid">
-        <h1>Smart-Ass Sign Up</h1>
+      <div className="container" style={{backgroundColor: 'black'}}>
+        <h1 style={{ color: 'white' }}>Smart-Ass Sign Up</h1>
         <div className="row">
           <div className="col-md-12">
             <form role="form" onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label>Create Username</label>
+                <label style={{color: 'white'}}>Create Username</label>
                 <input type="text" name="username" className="form-control" id="UsernameCreate" onChange={this.handleChange} />
               </div>
             <div className="form-group">
-              <label>Email address</label>
+                <label style={{ color: 'white' }}>Email address</label>
               <input  type="text" 
                       name="email" 
                       className="form-control" 
@@ -87,7 +92,7 @@ export default class SignUp extends React.Component {
                       onChange={this.handleChange} />
             </div>
             <div className="form-group">
-              <label id="passwordInput">Password</label>
+                <label id="passwordInput" style={{ color: 'white' }}>Password</label>
               <input type="password" 
                       name="passwordinput" 
                       className="form-control" 
@@ -95,14 +100,17 @@ export default class SignUp extends React.Component {
                       onChange={this.handleChange} />
             </div>
             <div className="form-group">
-              <label id="passwordInput2">Re-Enter Password to confirm</label>
+                <label id="passwordInput2" style={{ color: 'white' }}>Re-Enter Password to confirm</label>
               <input  type="password" 
                       name="passwordinput2" 
                       className="form-control" 
                       id="passwordInputSign-InConfirm" 
                       onChange={this.handleChange} />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit"   
+                    className="btn btn-primary"
+                    // onClick={this.redirectToHome}
+                    >Submit</button>
             </form>
             <button type="submit"
               className="btn btn-primary"
