@@ -5,16 +5,16 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
-    this.updateUsername = this.updateUsername.bind(this);
+    this.updateEmail = this.updateEmail.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
   }
 
-  updateUsername(event) {
+  updateEmail(event) {
     event.preventDefault();
-    this.state.username = event.target.value;
+    this.state.email = event.target.value;
     console.log(this.state)
   }
 
@@ -22,6 +22,10 @@ export default class Login extends Component {
     event.preventDefault();
     this.state.password = event.target.value;
     console.log(this.state);
+  }
+
+  redirectToHome() {
+    this.props.history.push('/home');
   }
 
   render() {
@@ -32,8 +36,8 @@ export default class Login extends Component {
             <h2></h2>
             <form role="form">
               <div className="form-group">
-                <label style={{ color: 'white' }}>Username</label>
-                <input type="email" className="form-control" id="UsernameInput" onChange={this.updateUsername} />
+                <label style={{ color: 'white' }}>Email Address</label>
+                <input type="email" className="form-control" id="UsernameInput" onChange={this.updateEmail} />
               </div>
               <div className="form-group">
                 <label style={{ color: 'white' }}>Password</label>
@@ -41,7 +45,7 @@ export default class Login extends Component {
               </div>
               <button type="submit"
                 className="btn btn-primary"
-                onClick={this.redirectToGameCreation}>Log In</button>
+                onClick={this.redirectToHome}>Log In</button>
             </form>
           </div>
         </div>
