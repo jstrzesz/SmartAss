@@ -54,5 +54,20 @@ const findUser = callback => {
   queryUser.limit(10).select('username averageWinRate wins losses').exec(callback);
 }
 
+const getUser = callback => {
+  queryUser.select('userEmail').exec(callback);
+}
+
+const getUserByEmail = email => {
+  User.find({ email: email})
+}
+
+const userCheck = callback => {
+  queryUser.select('username userEmail userPassword').exec(callback);
+}
+
 module.exports.User = User;
 module.exports.findUser = findUser;
+module.exports.userCheck = userCheck;
+module.exports.getUser = getUser;
+module.exports.getUserByEmail = getUserByEmail;

@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+const bcrypt = require('bcrypt');
 //dbhelpers object
 const dbHelpers = require('../database/databasehelpers').dbHelpers;
 //api helpers object
@@ -50,7 +52,14 @@ app.use(function (req, res, next) {
   next();
 });
 
-
+//function to prevent cannot/get on re-render
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../front-end/dist/index.html'), err => {
+//     if (err) {
+//       res.status(500).send(err);
+//     }
+//   })
+// })
 //handler for signing up
 app.post('/sign_up',
   (request, response) => {
@@ -59,20 +68,46 @@ app.post('/sign_up',
     const username = request.body.username;
     const userEmail = request.body.email;
     const userPassword = request.body.passwordinput;
-
-    const userObject = {
-      username,
-      userEmail,
-      userPassword
-    }
+    
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(request.body.passwordinput, salt, (err, hash) => {
+        const userObject = {
+          username: request.body.username,
+          userEmail: request.body.email,
+          userPassword: hash
+        }
+        const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
+        dbHelpers.saveUser(newUserReadyForSaving, response);
+      })
+    })
 
     //save them to the database
     // const newUserReadyForSaving = dbHelpers.dbHelpers.n
-    const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
 
-    dbHelpers.saveUser(newUserReadyForSaving, response);
   });
 
+  //function for checking user email and password
+  app.post('/userCheck', (req, res) => {
+    database.userCheck((err, users) => {
+      const userEmails = [];
+      let results;
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].userEmail === req.body.email) {
+          userEmails.push(users[i]);
+          bcrypt.compare(req.body.password, userEmails[0].userPassword, (err, result) => {
+          if (err) {
+            console.error(err);
+          } else {
+            console.log(result, 'line107')
+            results = true;
+            res.send(results);
+          }
+        })
+        }
+      }
+  })
+})
+  
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
   triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.categoryId, req.body.difficulty, (err, res, body) => {
