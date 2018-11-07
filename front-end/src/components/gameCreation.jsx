@@ -81,16 +81,6 @@ export default class GameCreation extends Component {
     this.props.history.push('/gamePage', { state: { questions: this.state.questions} })
   }
 
-  // componentDidMount() {
-  //   this.redirectToLogin();
-  //   axios.get('/gameCreation')
-  //     .then(res => {
-  //       this.setState({questions: res.data})
-  //     }).catch(err => {
-  //       console.error(err)
-  //     })
-  // }
-
   handleSubmitGameParams(event) {
     event.preventDefault();
     const gameParams = {
@@ -100,6 +90,8 @@ export default class GameCreation extends Component {
     console.log(gameParams)
     axios.post('/gameCreation', gameParams)
       .then(response => {
+        this.state.questions = response.data;
+        console.log(this.state.questions);
         console.log(response, 'axios post request from gameCreation page')
       }).catch(error => {
         console.error(error);

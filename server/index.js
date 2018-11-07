@@ -119,7 +119,6 @@ app.post('/gameCreation', (req, response) => {
     } else {
       const parsedBody = JSON.parse(body);
       console.log(parsedBody, 'yo')
-      
       parsedBody.results.forEach(question => {
         gameQuestion = {
           category: question.category,
