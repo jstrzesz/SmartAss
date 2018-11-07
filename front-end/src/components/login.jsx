@@ -15,25 +15,31 @@ export default class Login extends Component {
     this.updatePassword = this.updatePassword.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.sayHello = this.sayHello.bind(this);
+    this.updatePasswordCheck = this.updatePasswordCheck.bind(this);
+    this.redirectToHome = this.redirectToHome.bind(this);
   }
 
   validateEmail(event) {
     event.preventDefault();
     const userCredentials = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      userCredentialsDenied: 'Email Address or Password Invalid, please enter again'
     }
-    console.log(userCredentials)
     axios.post('/userCheck', userCredentials)
-      .then(res => {
-        console.log(res.data, 'line 29');
-      //   if (res) {
-      //     this.setState({passwordCheck: true})
-      //     console.log(`Welcome back`)
-      //   }
-      //     console.log('Email or password incorrect')
-        
+      .then((res) => {
+        if (res) {
+          console.log(this)
+          this.updatePasswordCheck(res);
+          console.log(`Welcome back`)
+        } else {
+          console.log('Email or password incorrect')       
+        }
       })
+  }
+
+  updatePasswordCheck(bool) {
+    this.state.passwordCheck = bool;
   }
 
   updateEmail(event) {
@@ -49,7 +55,14 @@ export default class Login extends Component {
   }
 
   redirectToHome() {
-    this.props.history.push('/home');
+    // setTimeout(() => {
+      if (this.state.passwordCheck === true) {
+        this.props.history.push('/home');
+      } else {
+        console.log('lllksdfjalsd');
+        <div>{this.state.userCredentialsDenied}</div>;
+      }
+    // }, 500)
   }
 
   sayHello() {
@@ -73,7 +86,7 @@ export default class Login extends Component {
               </div>
               <button type="submit"
                 className="btn btn-primary"
-                // onClick={this.validateEmail}
+                onClick={this.redirectToHome}
                 >Submit</button>
             </form>
           </div>
