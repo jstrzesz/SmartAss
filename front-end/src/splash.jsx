@@ -7,6 +7,7 @@ export default class Splash extends Component {
     super(props);
     this.redirectToLogin = this.redirectToLogin.bind(this);
     this.redirectToSignUp = this.redirectToSignUp.bind(this);
+    this.redirectToHome = this.redirectToHome.bind(this);
   }
 
   redirectToLogin() {
@@ -15,6 +16,10 @@ export default class Splash extends Component {
 
   redirectToSignUp() {
     this.props.history.push('/sign_up');
+  }
+  
+  redirectToHome() {
+    this.props.history.push('/home');
   }
 
   render() {
@@ -26,6 +31,7 @@ export default class Splash extends Component {
               <div style={{color: 'white'}}>Splash page</div>
                 <button style={{ backgroundColor: 'white' }} onClick={this.redirectToSignUp}>Sign Up</button>
                 <button style={{backgroundColor: 'white'}} onClick={this.redirectToLogin}>Login</button>
+                <button style={{backgroundColor: 'white'}} onClick={this.redirectToHome}>Home</button>
               
             </div>
           <div className="col-md-2"></div>

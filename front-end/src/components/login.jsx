@@ -17,6 +17,7 @@ export default class Login extends Component {
     this.sayHello = this.sayHello.bind(this);
     this.updatePasswordCheck = this.updatePasswordCheck.bind(this);
     this.redirectToHome = this.redirectToHome.bind(this);
+    this.validation = this.validation.bind(this);
   }
 
   validateEmail(event) {
@@ -29,9 +30,9 @@ export default class Login extends Component {
     axios.post('/userCheck', userCredentials)
       .then((res) => {
         if (res) {
-          console.log(this)
           this.updatePasswordCheck(res);
-          console.log(`Welcome back`)
+          console.log(this.state.passwordCheck)
+          this.validation;
         } else {
           console.log('Email or password incorrect')       
         }
@@ -53,11 +54,14 @@ export default class Login extends Component {
     this.state.password = event.target.value;
     console.log(this.state);
   }
-
   redirectToHome() {
+    this.props.history.push('/home');
+  }
+  validation() {
     // setTimeout(() => {
       if (this.state.passwordCheck === true) {
-        this.props.history.push('/home');
+        console.log('hello')
+        this.redirectToHome();
       } else {
         console.log('lllksdfjalsd');
         <div>{this.state.userCredentialsDenied}</div>;
@@ -86,7 +90,7 @@ export default class Login extends Component {
               </div>
               <button type="submit"
                 className="btn btn-primary"
-                onClick={this.redirectToHome}
+                // onClick={this.validation}
                 >Submit</button>
             </form>
           </div>
