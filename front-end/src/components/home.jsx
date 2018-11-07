@@ -27,10 +27,13 @@ export default class Home extends Component {
     console.log(this.state);
   }
 
+  // redirectToGameCreation() {
+  //   this.props.history.push('/gameCreation', 
+  //   {state: {username: this.state.username}}
+  //   )
+  // }
   redirectToGameCreation() {
-    this.props.history.push('/gameCreation', 
-    {state: {username: this.state.username}}
-    )
+    this.props.history.push('/gameCreation');
   }
 
   componentDidMount() {

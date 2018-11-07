@@ -19,7 +19,7 @@ export default class GameCreation extends Component {
       difficulty: '',
       numberOfPlayers: 0,
       questions: [],
-      username: this.props.history.location.state.state
+      // username: this.props.history.location.state.state
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
@@ -73,8 +73,12 @@ export default class GameCreation extends Component {
     })
   }
 
+  // redirectToGamePage() {
+  //   this.props.history.push('/gamePage', {state: {questions: this.state.questions, username: this.state.username}})
+  // }
+
   redirectToGamePage() {
-    this.props.history.push('/gamePage', {state: {questions: this.state.questions, username: this.state.username}})
+    this.props.history.push('/gamePage', { state: { questions: this.state.questions} })
   }
 
   componentDidMount() {
@@ -126,7 +130,7 @@ export default class GameCreation extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <td>{this.state.username}</td>
+                  {/* <td>{this.state.username}</td> */}
                   <td>{this.state.category}</td>
                   <td>{this.state.difficulty}</td>
                   <td>1</td>
