@@ -81,15 +81,15 @@ export default class GameCreation extends Component {
     this.props.history.push('/gamePage', { state: { questions: this.state.questions} })
   }
 
-  componentDidMount() {
-    this.redirectToLogin();
-    axios.get('/gameCreation')
-      .then(res => {
-        this.setState({questions: res.data})
-      }).catch(err => {
-        console.error(err)
-      })
-  }
+  // componentDidMount() {
+  //   this.redirectToLogin();
+  //   axios.get('/gameCreation')
+  //     .then(res => {
+  //       this.setState({questions: res.data})
+  //     }).catch(err => {
+  //       console.error(err)
+  //     })
+  // }
 
   handleSubmitGameParams(event) {
     event.preventDefault();
@@ -97,7 +97,7 @@ export default class GameCreation extends Component {
       categoryId: this.state.categoryId,
       difficulty: this.state.difficulty
     }
-
+    console.log(gameParams)
     axios.post('/gameCreation', gameParams)
       .then(response => {
         console.log(response, 'axios post request from gameCreation page')

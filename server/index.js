@@ -109,47 +109,54 @@ app.post('/sign_up',
 })
   
 //handler for submitting parameters for game
-app.post('/gameCreation', (req, res) => {
+app.post('/gameCreation', (req, response) => {
+  console.log(req.body, 'line 113');
+  let gameQuestions = [];
+  let gameQuestion = {};
   triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.categoryId, req.body.difficulty, (err, res, body) => {
     if (err) {
       console.error(err);
     } else {
       const parsedBody = JSON.parse(body);
       console.log(parsedBody, 'yo')
+      
       parsedBody.results.forEach(question => {
-        questionsDB.save({
+        gameQuestion = {
           category: question.category,
           type: question.type,
           difficulty: question.difficulty,
           question: question.question,
           correct_answer: question.correct_answer,
           incorrect_answers: question.incorrect_answers
-        })
+        }
+        gameQuestions.push(gameQuestion);
       })
+      response.send(gameQuestions);
     }
   })
-  res.sendStatus(201);
-  res.end();
+  // res.send(gameQuestions);
+  // res.sendStatus(201);
+  // res.end();
 })
 //get request to database to retrieve questions
-app.get('/gameCreation', (req, res) => {
-  questionsDB.findQuestions((err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      const displayedQuestions = data.map(question => {
-        return {
-          category: question.category,
-          difficulty: question.difficulty,
-          question: question.question,
-          correct_answer: question.correct_answer,
-          incorrect_answers: question.incorrect_answers
-        };
-      })
-      res.send(displayedQuestions);
-    }
-  })
-})
+// app.get('/gameCreation', (req, res) => {
+//   questionsDB.findQuestions((err, data) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       const displayedQuestions = data.map(question => {
+//         return {
+//           category: question.category,
+//           difficulty: question.difficulty,
+//           question: question.question,
+//           correct_answer: question.correct_answer,
+//           incorrect_answers: question.incorrect_answers
+//         };
+//       })
+//       res.send(displayedQuestions);
+//     }
+//   })
+// })
 //handler for changing the user stats that won the game
 app.post('/gameover',
   (request, response) => {

@@ -12,7 +12,7 @@ export default class GamePage extends Component {
       timeRemaining: 20,
       questionsToDisplay: this.props.history.location.state.state.questions,
       newQuestionOrder: [],
-      username: this.props.history.location.state.state.username
+      // username: this.props.history.location.state.state.username
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
@@ -42,8 +42,11 @@ export default class GamePage extends Component {
     }
   }
   
+  // redirectToGameOver() {
+  //   this.props.history.push('/gameOver', {state: this.state.username})
+  // }
   redirectToGameOver() {
-    this.props.history.push('/gameOver', {state: this.state.username})
+    this.props.history.push('/gameOver')
   }
   
   componentDidMount () {
