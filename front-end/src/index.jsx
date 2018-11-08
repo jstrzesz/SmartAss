@@ -7,10 +7,11 @@ import GameOver from './components/gameOver.jsx';
 import GamePage from './components/gamePage.jsx';
 import GameCreation from './components/gameCreation.jsx';
 import Navigation from './components/navigation.jsx';
-import triviaHelpers from '../../server/trivia_api_helpers.js'
+import triviaHelpers from '../../server/trivia_api_helpers.js';
 import Error from './components/error.jsx';
 import Splash from './splash.jsx';
 import Login from './components/login.jsx';
+import Loading from './components/loading.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/gameCreation" render={props => <GameCreation {...props} />}/>
             <Route path="/gamePage" render={props => <GamePage {...props} />}/>
             <Route path="/gameOver" render={props => <GameOver {...props} />} />
+            <Route path="/loading" render={props => <Loading {...props} />} />
             <Route component={ Error } />
           </Switch>
         </div>

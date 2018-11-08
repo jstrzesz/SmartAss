@@ -22,8 +22,9 @@ export default class GamePage extends Component {
   }
   
   toggleSelector(position) {
-      this.setState({selectedAnswer: position}, () => {
-      })
+    this.state.selectedAnswer = position;
+      // this.setState({selectedAnswer: position}, () => {
+      // })
   }
 
   selectedColor(position) {
@@ -31,6 +32,15 @@ export default class GamePage extends Component {
       return '#87FDFD'
     }
     return '';
+  }
+
+  shuffle(array) {
+    let copy = [], n = array.length, i;
+    while (n) {
+      i = Math.floor(Math.random() * n--);
+      copy.push(array.splice(i, 1)[0]);
+    }
+    return copy;
   }
 
   countdown() {
@@ -59,6 +69,8 @@ export default class GamePage extends Component {
   }
 
   reorderQuestions () {
+    this.shuffle(this.state.questionsToDisplay);
+    
     this.setState({})
   }
 
@@ -68,16 +80,17 @@ export default class GamePage extends Component {
 
   render () {
     return (
-      <div className="container">
-        {this.state.questionsToDisplay.map((question, index) => {
-          return (<Choices key={index} question={question} />)
-        })}
-        <div>
-          <button type="button"
-                  className="btn btn-success"
-                  onClick={this.redirectToGameOver}>Game Over</button>
-        </div>
-      </div>
+      <div>gamePagePlaceholder</div>
+      // <div className="container">
+      //   {this.state.questionsToDisplay.map((question, index) => {
+      //     return (<Choices key={index} question={question} />)
+      //   })}
+      //   <div>
+      //     <button type="button"
+      //             className="btn btn-success"
+      //             onClick={this.redirectToGameOver}>Game Over</button>
+      //   </div>
+      // </div>
     )
   }
 }

@@ -52,6 +52,7 @@ export default class GameCreation extends Component {
 
   categoryDropdownClick (e) {
     e.preventDefault();
+    console.log(e.target);
     this.setState({
       category: e.target.name,
       categoryId: e.target.id
@@ -60,6 +61,7 @@ export default class GameCreation extends Component {
 
   difficultyDropdownClick(e) {
     e.preventDefault();
+    console.log(e.target);
     this.setState({
       difficulty: e.target.name
     })
@@ -78,7 +80,7 @@ export default class GameCreation extends Component {
   // }
 
   redirectToGamePage() {
-    this.props.history.push('/gamePage', { state: { questions: this.state.questions} })
+    this.props.history.push('/loading', { state: { questions: this.state.questions} })
   }
 
   handleSubmitGameParams(event) {
@@ -123,9 +125,10 @@ export default class GameCreation extends Component {
               <tbody>
                 <tr>
                   {/* <td>{this.state.username}</td> */}
+                  <td>Usernames</td>
                   <td>{this.state.category}</td>
                   <td>{this.state.difficulty}</td>
-                  <td>1</td>
+                  <td>{this.state.numberOfPlayers}</td>
                   <td>
                     <div className="dropdown" onClick={this.toggleOpenCategory}>
                       <button className="btn btn-primary dropdown-toggle"
@@ -176,7 +179,7 @@ export default class GameCreation extends Component {
                             href="#"
                             name={player.number}
                             key={player.id}
-                            onClick={e => this.difficultyDropdownClick(e)}>{player.number}</a>);
+                            onClick={e => this.playersDropdownClick(e)}>{player.number}</a>);
                         })}
                       </div>
                     </div>
