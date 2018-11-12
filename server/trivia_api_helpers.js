@@ -33,9 +33,9 @@ const trivia_categories = [
 ]
 
 const difficulty_levels = [
-  {id: 1, level: 'easy'}, 
-  {id: 2, level: 'medium'}, 
-  {id: 3, level: 'hard'}
+  { id: 1, level: 'easy', color: '#0CC625'}, 
+  { id: 2, level: 'medium', color: '#DECC21'}, 
+  { id: 3, level: 'hard', color: '#C22009'}
 ];
 
 const player_count = [

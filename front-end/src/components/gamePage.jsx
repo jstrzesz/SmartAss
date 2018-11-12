@@ -10,7 +10,7 @@ export default class GamePage extends Component {
       score: 0,
       correctAnswer: 'C',
       timeRemaining: 20,
-      questionsToDisplay: this.props.history.location.state.state.questions,
+      questionsToDisplay: this.props.history.location.state.state.gameQuestions,
       newQuestionOrder: [],
       // username: this.props.history.location.state.state.username
     }
@@ -80,17 +80,17 @@ export default class GamePage extends Component {
 
   render () {
     return (
-      <div>gamePagePlaceholder</div>
-      // <div className="container">
-      //   {this.state.questionsToDisplay.map((question, index) => {
-      //     return (<Choices key={index} question={question} />)
-      //   })}
-      //   <div>
-      //     <button type="button"
-      //             className="btn btn-success"
-      //             onClick={this.redirectToGameOver}>Game Over</button>
-      //   </div>
-      // </div>
+      // <div>gamePagePlaceholder</div>
+      <div className="container">
+        {this.state.questionsToDisplay.map((question, index) => {
+          return (<Choices key={index} question={question} />)
+        })}
+        <div>
+          <button type="button"
+                  className="btn btn-success"
+                  onClick={this.redirectToGameOver}>Game Over</button>
+        </div>
+      </div>
     )
   }
 }

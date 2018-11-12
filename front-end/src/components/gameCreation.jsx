@@ -19,6 +19,7 @@ export default class GameCreation extends Component {
       difficulty: '',
       numberOfPlayers: 0,
       questions: [],
+      difficultyBackgroundColor: ''
       // username: this.props.history.location.state.state
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
@@ -30,6 +31,7 @@ export default class GameCreation extends Component {
     this.redirectToGamePage = this.redirectToGamePage.bind(this);
     this.handleSubmitGameParams = this.handleSubmitGameParams.bind(this);
     this.redirectToLogin = this.redirectToLogin.bind(this);
+    // this.difficultyColor = this.difficultyColor.bind(this);
   }
 
   toggleOpenCategory () {
@@ -52,7 +54,7 @@ export default class GameCreation extends Component {
 
   categoryDropdownClick (e) {
     e.preventDefault();
-    console.log(e.target);
+    // console.log(e.target);
     this.setState({
       category: e.target.name,
       categoryId: e.target.id
@@ -61,11 +63,29 @@ export default class GameCreation extends Component {
 
   difficultyDropdownClick(e) {
     e.preventDefault();
-    console.log(e.target);
+    console.log(e.target)
+    this.state.difficulty = e.target.value;
+    // this.state.difficultyBackgroundColor = e.target.value;
     this.setState({
-      difficulty: e.target.name
-    })
+      difficulty: e.target.name,
+      // difficultyBackgroundColor: e.target.value
+    }, () => {})
+    console.log(this.state);
   }
+
+  // difficultyColor(e) {
+  //   console.log(this.state.difficulty);
+  //   if (e.target.name === 'easy') {
+  //     console.log('line 74')
+  //     this.difficultyBackgroundColor = '#0CC625';
+  //   } else if (e.target.name === 'medium') {
+  //     this.difficultyBackgroundColor = '#DECC21';
+  //   } else if (e.target.name === 'hard') {
+  //     this.difficultyBackgroundColor = '#C22009';
+  //   } else {
+  //     this.difficultyBackgroundColor = '';
+  //   }
+  // }
 
   playersDropdownClick(e) {
     e.preventDefault();
@@ -127,7 +147,7 @@ export default class GameCreation extends Component {
                   {/* <td>{this.state.username}</td> */}
                   <td>Usernames</td>
                   <td>{this.state.category}</td>
-                  <td>{this.state.difficulty}</td>
+                  <td style={{ background: this.state.difficultyBackgroundColor}}>{this.state.difficulty}</td>
                   <td>{this.state.numberOfPlayers}</td>
                   <td>
                     <div className="dropdown" onClick={this.toggleOpenCategory}>
@@ -143,7 +163,8 @@ export default class GameCreation extends Component {
                                       name={category.name} 
                                       key={category.id}
                                       id={category.id}
-                                      onClick={e => this.categoryDropdownClick(e)}>{category.name}</a>);
+                                      onClick={e => this.categoryDropdownClick(e)}
+                                      >{category.name}</a>);
                         })}
                       </div>
                     </div>
@@ -161,7 +182,9 @@ export default class GameCreation extends Component {
                                       href="#"
                                       name={difficulty.level}
                                       key={difficulty.id}
-                                      onClick={e => this.difficultyDropdownClick(e)}>{difficulty.level}</a>);
+                                      // value={difficulty.level}
+                                      onClick={e => this.difficultyDropdownClick(e)}
+                                      >{difficulty.level}</a>);
                         })}
                       </div>
                     </div>

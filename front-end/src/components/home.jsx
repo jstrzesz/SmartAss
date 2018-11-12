@@ -55,6 +55,15 @@ export default class Home extends Component {
         <h1 style={{ color: 'white' }}>Smart-Ass™</h1>
         <h2 style={{ color: 'white' }}>A Trivia Game</h2>
         <h3 style={{ color: 'white' }}>© 2018</h3>
+        <div>
+          <BrowserRouter>
+            <Link to="/gameCreation">
+              <button type="submit"
+                className="btn btn-primary"
+                onClick={this.redirectToGameCreation}>Create Game</button>
+            </Link>
+          </BrowserRouter>
+        </div>
         <div className="row">
           <div className="col-md-12">
             <div className="row">
@@ -75,15 +84,7 @@ export default class Home extends Component {
                     })}
                   </tbody>
                 </table>
-                <div>
-                  <BrowserRouter>
-                    <Link to="/gameCreation">
-                      <button type="submit" 
-                              className="btn btn-primary" 
-                              onClick={this.redirectToGameCreation}>Create Game</button>
-                    </Link>
-                  </BrowserRouter>
-                </div>
+                
               </div>
 
               <div className="col-md-4">
