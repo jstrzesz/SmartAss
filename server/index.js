@@ -122,11 +122,11 @@ app.post('/gameCreation', (req, response) => {
       parsedBody.results.forEach(question => {
         gameQuestion = {
           category: question.category,
-          type: question.type,
+          tyxpe: question.type,
           difficulty: question.difficulty,
           question: question.question,
           correct_answer: question.correct_answer,
-          incorrect_answers: question.incorrect_answers
+          incorrect_answers: question.incorrect_answers.concat(question.correct_answer)
         }
         gameQuestions.push(gameQuestion);
       })

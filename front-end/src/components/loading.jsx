@@ -25,7 +25,7 @@ export default class Loading extends Component {
   }
 
   redirectToGamePage() {
-    this.props.history.push('/gamePage', {state: { gameQuestions: this.state.reorderedQuestions }});
+    this.props.history.push('/gamePage', { gameQuestions: this.state.reorderedQuestions });
   }
 
   fixQuestions(array) {
@@ -37,6 +37,10 @@ export default class Loading extends Component {
       question.question = question.question.replace(/&#039;/g, '\'');
       question.question = question.question.replace(/&amp;/g, '&');
       question.question = question.question.replace(/&eacute;/g, 'é');
+      question.question = question.question.replace(/&ldquo;/g, '"');
+      question.question = question.question.replace(/&rsquo;/g, '\'');
+      question.question = question.question.replace(/&hellip;/g, '_____');
+      question.question = question.question.replace(/&rdquo;/g, ':');
       question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
       question.correct_answer = question.correct_answer.replace(/`/g, '"');
       question.correct_answer = question.correct_answer.replace(/&#039;/g, '\'');
@@ -50,17 +54,20 @@ export default class Loading extends Component {
   }
 
   fixIncorrectAnswers(array) {
-    const newArr = [];
+    let correct_answer = '';
     
     array.forEach(question => {
       for (let i = 0; i < question.incorrect_answers.length; i++) {
+        // correct_answer = question.correct_answer;
         console.log(question.incorrect_answers[i], 'line 55');
         question.incorrect_answers[i] = question.incorrect_answers[i].replace(/&quot;/g, '"');
         question.incorrect_answers[i] = question.incorrect_answers[i].replace(/`/g, '"');
         question.incorrect_answers[i] = question.incorrect_answers[i].replace(/&#039;/g, '\'');
         question.incorrect_answers[i] = question.incorrect_answers[i].replace(/&amp;/g, '&');
         question.incorrect_answers[i] = question.incorrect_answers[i].replace(/&eacute;/g, 'é');
+        // question.incorrect_answers.push(correct_answer);
       }
+      console.log(question.incorrect_answers, 'line 70')
       return question.incorrect_answers;
     })
     console.log(array, 'line 66');

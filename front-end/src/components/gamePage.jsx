@@ -8,9 +8,9 @@ export default class GamePage extends Component {
     this.state = {
       selectedAnswer: null,
       score: 0,
-      correctAnswer: 'C',
+      correctAnswer: '',
       timeRemaining: 20,
-      questionsToDisplay: this.props.history.location.state.state.gameQuestions,
+      questionsToDisplay: this.props.history.location.state.gameQuestions,
       newQuestionOrder: [],
       // username: this.props.history.location.state.state.username
     }
@@ -19,6 +19,8 @@ export default class GamePage extends Component {
     this.countdown = this.countdown.bind(this);
     this.reorderQuestions = this.reorderQuestions.bind(this);
     this.redirectToGameOver = this.redirectToGameOver.bind(this);
+    this.shuffle = this.shuffle.bind(this);
+    this.setCorrectAnswer = this.setCorrectAnswer.bind(this);
   }
   
   toggleSelector(position) {
@@ -32,6 +34,14 @@ export default class GamePage extends Component {
       return '#87FDFD'
     }
     return '';
+  }
+
+  setCorrectAnswer(array) {
+    this.setState(() => {
+      array.forEach(question => {
+        this.state.correctAnswer = question.correct_Answer;
+      })
+    })
   }
 
   shuffle(array) {
