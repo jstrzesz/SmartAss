@@ -13,6 +13,7 @@ export default class Loading extends Component {
     this.loadGamePage = this.loadGamePage.bind(this);
     this.fixQuestions = this.fixQuestions.bind(this);
     this.fixIncorrectAnswers = this.fixIncorrectAnswers.bind(this);
+    this.shuffleIncorrectAnswers = this.shuffleIncorrectAnswers.bind(this);
   }
 
   shuffle(array) {
@@ -22,6 +23,13 @@ export default class Loading extends Component {
       copy.push(array.splice(i, 1)[0]);
     }
     return copy;
+  }
+
+  shuffleIncorrectAnswers(array) {
+    array.forEach(question => {
+      question.reordered_answers = this.shuffle(question.incorrect_answers);
+    })
+    return array;
   }
 
   redirectToGamePage() {
@@ -78,6 +86,7 @@ export default class Loading extends Component {
     console.log(this.state.questionsToDisplay);
     this.fixIncorrectAnswers(this.state.questionsToDisplay);
     this.state.reorderedQuestions = this.shuffle(this.state.questionsToDisplay);
+    this.shuffleIncorrectAnswers(this.state.reorderedQuestions);
     console.log(this.state.reorderedQuestions);
     this.fixQuestions(this.state.reorderedQuestions);
     this.loadGamePage();

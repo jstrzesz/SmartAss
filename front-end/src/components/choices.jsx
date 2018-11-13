@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 export default class Choices extends Component {
   constructor(props) {
     super(props);
+    console.log(props, 'choices');
     this.state = {
-      selectedAnswer: null,
+      selectedAnswer: '',
       score: 0,
-      correctAnswer: null,
+      correctAnswer: this.props.question.correct_answer,
       timeRemaining: 60,
       newQuestionOrder: []
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
     this.countdown = this.countdown.bind(this);
+    this.updateScore = this.updateScore.bind(this);
   }
 
   toggleSelector(position) {
@@ -26,6 +28,12 @@ export default class Choices extends Component {
     return '';
   }
 
+  updateScore() {
+    if (this.state.selectedAnswer === this.state.correctAnswer) {
+      this.state.score += 1;
+    }
+  }
+
   countdown() {
     this.setState((prevState) => ({
       timeRemaining: prevState.timeRemaining - 1
@@ -35,8 +43,15 @@ export default class Choices extends Component {
     }
   }
 
+  displayQuestion(array) {
+    array.forEach(question => {
+      this.state.correctAnswer = this.state.correct_answer;
+      this.s
+    })
+  }
+
   componentDidMount() {
-    this.interval = setInterval(() => this.countdown(), 1000)
+    // this.interval = setInterval(() => this.countdown(), 1000)
     // setInterval(() => {
     //   if (this.state.selectedAnswer === this.state.correctAnswer) {
     //     this.setState({ score: this.state.score + 1 });
@@ -59,19 +74,19 @@ export default class Choices extends Component {
               <tbody>
                 <tr className="first-option">
                   <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>A</td>
-                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>{this.props.question.incorrect_answers[1]}</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>{this.props.question.reordered_answers[1]}</td>
                 </tr>
                 <tr className="second-option">
                   <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>B</td>
-                  <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>{this.props.question.incorrect_answers[2]}</td>
+                  <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>{this.props.question.reordered_answers[2]}</td>
                 </tr>
                 <tr className="third-option">
                   <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>C</td>
-                  <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>{this.props.question.correct_answer}</td>
+                  <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>{this.props.question.reordered_answers[3]}</td>
                 </tr>
                 <tr className="fourth-option">
                   <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>D</td>
-                  <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>{this.props.question.incorrect_answers[0]}</td>
+                  <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>{this.props.question.reordered_answers[0]}</td>
                 </tr>
               </tbody>
             </table>
@@ -79,7 +94,7 @@ export default class Choices extends Component {
           <div className="col-md-4">
             <div>
               <h3>Time Remaining: {this.state.timeRemaining}</h3>
-              {/* <h4>Score: {this.state.score}</h4> */}
+              <h4>Score: {this.state.score}</h4>
               <button type="button"
                       className="btn btn-success">Next Question</button>
             </div>
