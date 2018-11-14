@@ -5,10 +5,12 @@ export default class Choices extends Component {
     super(props);
     console.log(props, 'choices');
     this.state = {
+      option: ['A', 'B', 'C', 'D'],
       selectedAnswer: '',
       score: 0,
       correctAnswer: this.props.question.correct_answer,
       timeRemaining: 60,
+      gameQuestions: this.props.reordered_answers,
       newQuestionOrder: []
     }
     this.toggleSelector = this.toggleSelector.bind(this);
@@ -28,10 +30,19 @@ export default class Choices extends Component {
     return '';
   }
 
-  updateScore() {
+  updateScore(e) {
+    e.preventDefault();
+    console.log(e.target.name, 'line 34')
     if (this.state.selectedAnswer === this.state.correctAnswer) {
-      this.state.score += 1;
+      console.log(this.state.selectedAnswer, this.state.correctAnswer, this.state.score, 'line 34')
+      this.setState({
+        score: this.state.score++
+      }, () => {})
     }
+  }
+
+  updateCorrectAnswer() {
+
   }
 
   countdown() {
@@ -45,7 +56,7 @@ export default class Choices extends Component {
 
   displayQuestion(array) {
     array.forEach(question => {
-      this.state.correctAnswer = this.state.correct_answer;
+      this.state.correctAnswer = question.correct_answer;
       this.s
     })
   }
@@ -72,9 +83,17 @@ export default class Choices extends Component {
           <div className="col-md-8">
             <table className="table">
               <tbody>
-                <tr className="first-option">
-                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>A</td>
-                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>{this.props.question.reordered_answers[1]}</td>
+                {this.props.question.reordered_answers.map((answer, index) => {
+                  return (<td key={index} 
+                              name={answer} 
+                              style={{ background: this.selectedColor(answer)}}
+                              onClick={e => {this.toggleSelector(answer); this.updateScore(e)}}
+                              >{answer}</td>)
+                })}
+                
+                {/* <tr className="first-option">
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')} >A</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')} onClick={(e) => this.updateScore(e)} name={this.props.question.reordered_answers[1]}>{this.props.question.reordered_answers[1]}</td>
                 </tr>
                 <tr className="second-option">
                   <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>B</td>
@@ -87,7 +106,7 @@ export default class Choices extends Component {
                 <tr className="fourth-option">
                   <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>D</td>
                   <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>{this.props.question.reordered_answers[0]}</td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>
