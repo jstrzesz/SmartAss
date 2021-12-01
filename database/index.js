@@ -10,14 +10,16 @@ var db = mongoose.connection;
 
 
 //FIXME: remember to add a process.env here for mlabs deploy
-const mongoDB = `mongodb://user:tron22@ds153552.mlab.com:53552/smartass`;
+const mongoDB = `mongodb://localhost/smartass`;
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, {
-  keepAlive: true,
-  reconnectTries: Number.MAX_VALUE,
+  // keepAlive: true,
+  // reconnectTries: Number.MAX_VALUE,
   //deprecation warning fix12
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true,
 });
 //deprecation warning fix
 
