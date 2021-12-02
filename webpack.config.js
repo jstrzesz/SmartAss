@@ -1,10 +1,13 @@
 const path = require('path');
 
-const SRC_DIR = path.resolve(__dirname, 'front-end/src');
-const DIST_DIR = path.resolve(__dirname, 'front-end/dist');
+const SRC_DIR = path.resolve(__dirname, 'client/src');
+const DIST_DIR = path.resolve(__dirname, 'client/dist');
 
 const config = {
-  entry: `${SRC_DIR}/index.jsx`,
+  entry: `${SRC_DIR}/index.js`,
+  mode: 'development',
+  watch: true,
+  devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: DIST_DIR
@@ -12,20 +15,17 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.(js|jsx)$/,
         include: SRC_DIR,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        exclude: /node_modules/,
+        loader: ['babel-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       }
     ],
   },
-  node: {
-    net: 'empty',
-    tls: 'empty',
-    fs: 'empty'
-  }
 };
 
 module.exports = config;

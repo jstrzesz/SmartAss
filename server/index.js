@@ -1,17 +1,19 @@
 const express = require('express');
+const path = require('path');
 //dbhelpers object
 const dbHelpers = require('../database/databasehelpers').dbHelpers;
 //api helpers object
-const triviaHelpers = require('./trivia_api_helpers').triviaHelpers;
+const triviaHelpers = require('../client/src/assets/trivia_api_helpers').triviaHelpers;
 //access questions database
 const database = require('../database/index');
 const questionsDB = require('../database/questions')
 //require cors
 const cors = require('cors');
 
+const DIST_DIR = path.resolve(__dirname, '..', 'client/dist');
 
 //morgan will intercept http requests and log them in terminal
-const morgan = require('morgan');
+// const morgan = require('morgan');
 //body parser
 const bodyParser = require('body-parser');
 
@@ -20,10 +22,10 @@ const app = express();
 //enable cors
 app.use(cors());
 //use the tiny version of morgan showing the http method and ping
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 //bodyParser config options
 // parse application/x-www-form-urlencoded
-app.use(express.static(__dirname + '/../front-end/dist'));
+app.use(express.static(DIST_DIR));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
