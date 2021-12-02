@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
 import GamePage from './gamePage.jsx';
 // import request from 'request';
@@ -7,7 +7,29 @@ import axios from 'axios';
 
 
 const GameCreation = () => {
-  return (<div>Game Creation Page</div>)
+  const [difficulty, setDifficulty] = useState('');
+
+  useEffect(() => {
+
+  })
+
+  const getQuestions = () => {
+    axios.post('/api/questions', {
+      difficulty
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
+  return (
+    <div>
+      <h2>Select Difficulty</h2>
+      <button onClick={() => setDifficulty('Hard')}>{'Hard'}</button>
+      <button type="submit" onClick={getQuestions}>Submit</button>
+    </div>)
+};
+
+export default GameCreation;
   // constructor(props) {
   //   super(props);
   //   console.log(props)
@@ -200,6 +222,6 @@ const GameCreation = () => {
   //     </div>
   //   )
   // }
-}
+// }
 
-export default GameCreation;
+// export default GameCreation;

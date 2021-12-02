@@ -3,14 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App.jsx';
 
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       triviaHelpers: triviaHelpers
-//     }
-//   }
-
 //   render() {
 //     return (
 //       <BrowserRouter>

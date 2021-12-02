@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 //const config = require('../config/config')†
 const db = mongoose.connection;
  //NOTE: uncomment to drop database
-const mongoDB = `mongodb://user:tron22@ds153552.mlab.com:53552/smartass`;
+// const mongoDB = `mongodb://user:tron22@ds153552.mlab.com:53552/smartass`;
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;
-mongoose.connect(mongoDB, {
-  keepAlive: true,
-  reconnectTries: Number.MAX_VALUE,
-  //deprecation warning fix12
-  useNewUrlParser: true,
-});
+// mongoose.connect(mongoDB, {
+//   keepAlive: true,
+//   reconnectTries: Number.MAX_VALUE,
+//   //deprecation warning fix12
+//   useNewUrlParser: true,
+// });
  //FIXME: remember to add a process.env here for mlabs deploy
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;

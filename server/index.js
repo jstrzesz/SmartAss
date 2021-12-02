@@ -12,6 +12,8 @@ const cors = require('cors');
 
 const DIST_DIR = path.resolve(__dirname, '..', 'client/dist');
 
+const router = require('./routes/index');
+
 //morgan will intercept http requests and log them in terminal
 // const morgan = require('morgan');
 //body parser
@@ -30,7 +32,7 @@ app.use(express.static(DIST_DIR));
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
-
+router(app);
 
 
 let port = process.env.PORT || 3060;

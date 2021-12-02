@@ -1,5 +1,5 @@
 const path = require('path');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SRC_DIR = path.resolve(__dirname, 'client/src');
 const DIST_DIR = path.resolve(__dirname, 'client/dist');
 
@@ -18,14 +18,19 @@ const config = {
         test: /\.(js|jsx)$/,
         include: SRC_DIR,
         exclude: /node_modules/,
-        loader: ['babel-loader'],
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
-      }
+      },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './client/src/index.html'
+    })
+  ]
 };
 
 module.exports = config;
