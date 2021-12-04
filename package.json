@@ -4,10 +4,9 @@
   "description": "a trivia game",
   "main": "index.js",
   "scripts": {
-    "start": "export MLAB='mongodb://user:tron22@ds153552.mlab.com:53552/smartass' &&node server/index.js",
+    "start": "nodemon server/index.js",
     "build": "webpack",
     "demon": "export MLAB='mongodb://user:tron22@ds153552.mlab.com:53552/smartass' && nodemon server/index.js",
-    "demon:dev": "nodemon server/index.js",
     "pm2": "export MLAB='mongodb://user:tron22@ds153552.mlab.com:53552/smartass' && pm2 start server/index.js"
   },
   "repository": {
