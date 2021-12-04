@@ -1,0 +1,41 @@
+.nav-container {
+  width: 100%;
+  height: 48px;
+  background-color: limegreen;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar > .nav-link {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-bar .nav-link > a {
+  text-decoration: none;
+  color: white;
+  text-shadow: #f2f2f2;
+}
+
+.nav-container .nav-bar > .login {
+  float: right;
+  position: absolute;
+  top: 20px;
+  right: 22%;
+}
+
+.nav-bar .nav-link:hover {
+  background-color: darkgreen;
+}
+
+/* .nav-bar .nav-link > a:hover {
+  color: white;
+} */
+/* .nav-link s */
