@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import GamePage from './gamePage.jsx';
-// import request from 'request';
 import triviaHelpers from '../assets/trivia_api_helpers.js';
 import axios from 'axios';
 
 
 const GameCreation = () => {
-  const [difficulty, setDifficulty] = useState('');
+  const [difficulty, setDifficulty] = useState('hard');
+  const [questions, setQuestions] = useState([]);
+
+  // const history = useHistory();
 
   useEffect(() => {
 
@@ -17,15 +19,18 @@ const GameCreation = () => {
     axios.post('/api/questions', {
       difficulty
     })
-      .then(res => console.log(res))
+      .then(({ data }) => {
+        setQuestions(data.results)
+        useHistory().push('/game');
+      })
       .catch(err => console.log(err));
   }
 
   return (
     <div>
       <h2>Select Difficulty</h2>
-      <button onClick={() => setDifficulty('Hard')}>{'Hard'}</button>
-      <button type="submit" onClick={getQuestions}>Submit</button>
+      <button onClick={() => setDifficulty('hard')}>{'Hard'}</button>
+      <button type="submit" onClick={() => getQuestions()}>Submit</button>
     </div>)
 };
 

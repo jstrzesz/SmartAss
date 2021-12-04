@@ -11,7 +11,10 @@ questionRouter.post('/', (req, res) => {
   console.log(difficulty)
   // https://opentdb.com/api.php?amount=10&category=15&difficulty=hard&type=multiple
   axios.get(`https://opentdb.com/api.php?amount=10&category=15&difficulty=${difficulty}&type=multiple`)
-    .then(res => console.log(res))
+    .then(({ data }) => {
+      console.log(data, 'line 15')
+      res.status(200).send(data)
+    })
     .catch(err => console.log(err))
 })
 
