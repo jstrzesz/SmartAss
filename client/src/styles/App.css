@@ -1,0 +1,9 @@
+.main-container {
+  padding: 0% 20%;
+  max-width: 100%;
+  max-height: auto;
+}
+
+h1, h2, h4, h6, a {
+  font-family: 'Arial';
+}

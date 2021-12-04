@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SRC_DIR = path.resolve(__dirname, 'client/src');
 const DIST_DIR = path.resolve(__dirname, 'client/dist');
 
-const config = {
+module.exports = {
   entry: `${SRC_DIR}/index.js`,
   mode: 'development',
   watch: true,
@@ -32,5 +32,3 @@ const config = {
     })
   ]
 };
-
-module.exports = config;

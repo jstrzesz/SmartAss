@@ -50,8 +50,8 @@ const Home = () =>  {
       <div className="container">
         {/* <Card variant="outlined"> */}
           <h1>Smart-Ass™</h1>
-          <h2>A Trivia Game</h2>
-          <h3>© 2018-2021</h3>
+          <h4>A Trivia Game</h4>
+          <h6>© 2018-2021</h6>
 
         {/* </Card> */}
         <Link to="create">Create Game</Link>
