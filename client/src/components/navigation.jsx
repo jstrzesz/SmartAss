@@ -7,11 +7,15 @@ import '../styles/Navigation.css';
 const navLinksArr = [
   {
     title: 'Home',
-    endpoint: 'home',
+    endpoint: '/',
   },
   {
     title: 'Categories',
     endpoint: 'category'
+  },
+  {
+    title: 'Game',
+    endpoint: 'game',
   }
 ]
 

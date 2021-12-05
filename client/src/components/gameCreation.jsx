@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import GamePage from './gamePage.jsx';
 import triviaHelpers from '../assets/trivia_api_helpers.js';
 import axios from 'axios';
@@ -12,25 +12,28 @@ const GameCreation = () => {
   // const history = useHistory();
 
   useEffect(() => {
-
-  })
+    console.log(questions, 'line 15')
+    getQuestions();
+  }, [])
 
   const getQuestions = () => {
-    axios.post('/api/questions', {
-      difficulty
-    })
-      .then(({ data }) => {
-        setQuestions(data.results)
-        useHistory().push('/game');
-      })
-      .catch(err => console.log(err));
-  }
 
+      return axios.post('/api/questions', { difficulty })
+      .then(({ data }) => {
+        console.log(data);
+        return setQuestions(prevQuestions => [...prevQuestions, ...data.results])
+        console.log(questions);
+        // history.push('/game');
+      })
+       .catch(err => console.log(err));
+  }
   return (
     <div>
       <h2>Select Difficulty</h2>
       <button onClick={() => setDifficulty('hard')}>{'Hard'}</button>
-      <button type="submit" onClick={() => getQuestions()}>Submit</button>
+      <Link to={"/game"} state={{ questions }}>
+        <button type="submit" onClick={() => { }}>Submit</button>
+      </Link>
     </div>)
 };
 

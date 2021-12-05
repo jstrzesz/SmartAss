@@ -16,7 +16,11 @@ const NavEntry = ({ endpoint, title }) => {
   }
 
   return (
-    <div className="nav-link" onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
+    <div 
+      className="nav-link"
+      onMouseEnter={() => toggleHover()}
+      // onMouseLeave={() => toggleHover()}
+    >
       <Link to={`${endpoint}`}>{title}</Link>
       {hover ? title !== 'Home' ? <Dropdown options={options} /> : null : null}
       {/* <Link to={`/${endpoint}`}>{title}</Link> */}
